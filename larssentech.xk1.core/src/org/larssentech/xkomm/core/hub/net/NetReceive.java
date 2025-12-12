@@ -57,16 +57,6 @@ class NetReceive {
 		return ObjectFactory.importMessages(rawMessages, Hub.hubGetMe(), ObjectStoreModel.getContactValues());
 	}
 
-	/*
-	 * private static void put1MessageInStore(Message m) {
-	 * 
-	 * if (!ObjectStoreModel.isMessageSidKnown(m.getSid())) {
-	 * 
-	 * ObjectStoreModel.putInInbox(m);
-	 * 
-	 * ObjectStoreModel.recordMessageSid(m.getSid()); } }
-	 */
-
 	private static void put1MessageInStorev(Message m) {
 
 		if (!ObjectStoreModel.isMessageUidKnown(m.getUid())) {

@@ -67,12 +67,12 @@ public class Logger {
 
 		if (SHUT_UP) return;
 
-		String stackTrace = "";
+		//String stackTrace = "";
 
-		for (int i = 0; i < e.getStackTrace().length; i++)
-			stackTrace += e.getStackTrace()[i] + "\n";
+		//for (int i = 0; i < e.getStackTrace().length; i++)
+		//	stackTrace += e.getStackTrace()[i] + "\n";
 
-		Logger.processLog(Logger.ERROR_LOG, e.getMessage() + "; Details: \n" + stackTrace + "\n");
+		Logger.processLog(Logger.ERROR_LOG, e.getMessage() + "; Details: \n" + "N/A" + "\n");
 	}
 
 	public static void pl(String message) {
