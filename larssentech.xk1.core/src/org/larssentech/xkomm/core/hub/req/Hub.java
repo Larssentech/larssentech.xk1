@@ -80,30 +80,29 @@ public abstract class Hub {
 	 */
 	public static boolean hubInitialLogin() {
 
-		Logger.pl(Hub.class.getName() + ": Server URL: <" + Constants4Core.SERVER + "> Port: <" + Constants4Core.PORT
-				+ ">");
+		Logger.log(Hub.class.getName() + ": Server URL: <" + Constants4Core.SERVER + "> Port: <" + Constants4Core.PORT + ">");
 
 		try {
 
 			if (ReqSystem.login() && ReqContact.getMe().isLoggedIn()) {
 
-				Logger.pl(Hub.class.getName() + ":" + "initialLogin:" + " ...OK");
+				Logger.log(Hub.class.getName() + ":" + "initialLogin:" + " ...OK");
 
 				ReqSession.setSession(ReqSession.initSession());
 
 				return true;
 			}
 
-			Logger.pl(Hub.class.getName() + ":" + "initialLogin:" + " ...FAIL");
+			Logger.log(Hub.class.getName() + ":" + "initialLogin:" + " ...FAIL");
 
 		}
 
 		catch (SocketException e) {
 
-			Logger.pl(Hub.class.getName() + ":initialLogin: Cannot login: " + e.toString());
+			Logger.log(Hub.class.getName() + ":initialLogin: Cannot login: " + e.toString());
 		} catch (IOException e) {
 
-			Logger.pl(Hub.class.getName() + ":initialLogin: Cannot login: " + e.toString());
+			Logger.log(Hub.class.getName() + ":initialLogin: Cannot login: " + e.toString());
 		}
 
 		return false;
@@ -118,14 +117,14 @@ public abstract class Hub {
 
 		if (ReqContact.getMe().isLoggedIn()) {
 
-			Logger.pl(Hub.class.getName() + ":" + "starting...");
+			Logger.log(Hub.class.getName() + ":" + "starting...");
 
 			if (!NetMonitor.isStarted()) {
 
 				controller = new NetMonitor();
 				controller.startMonitor();
 
-				if (controller.getMonitor().isAlive()) Logger.pl(Hub.class.getName() + ":" + "start XKomm:" + " ...OK");
+				if (controller.getMonitor().isAlive()) Logger.log(Hub.class.getName() + ":" + "start XKomm:" + " ...OK");
 
 				return true;
 			}
@@ -137,35 +136,12 @@ public abstract class Hub {
 		return false;
 	}
 
-//	public static boolean hubStartXK2() {
-//
-//		if (ReqContact.getMe().isLoggedIn()) {
-//
-//			Logger.pl(Hub.class.getName() + ":" + "starting...");
-//
-//			if (!NetController.isStarted()) {
-//
-//				controller = new NetController();
-//				controller.start();
-//
-//				if (controller.isAlive()) { Logger.pl(Hub.class.getName() + ":" + "startXK2:" + " ...OK"); }
-//
-//				return true;
-//			}
-//
-//			return false;
-//
-//		}
-//
-//		return false;
-//	}
-
 	public static boolean hubRequestNetworkSlot() {
 
 		while (!hubHaveNetwork()) {
 			try {
 
-				Logger.pl(" W4N...");
+				Logger.log(" W4N...");
 
 				Thread.sleep(Constants4Core.REQUEST_NET_SLEEP);
 
@@ -234,10 +210,10 @@ public abstract class Hub {
 
 		catch (Exception e) {
 
-			Logger.pl(NetworkConstants.GET_SERVER_PUK_ERROR + e.getClass().getName());
+			Logger.log(NetworkConstants.GET_SERVER_PUK_ERROR + e.getClass().getName());
 		}
 
-		Logger.pl("Failed to anonymously retrieve server PUK: Cannot Continue... Goodbye.");
+		Logger.log("Failed to anonymously retrieve server PUK: Cannot Continue... Goodbye.");
 
 		return new PUK();
 	}
@@ -248,10 +224,10 @@ public abstract class Hub {
 			return ReqContact.deleteContact(user);
 		} catch (SocketException e) {
 
-			Logger.pl("Hub:deleteContact failed (" + e.getMessage() + ")");
+			Logger.log("Hub:deleteContact failed (" + e.getMessage() + ")");
 		} catch (IOException e) {
 
-			Logger.pl("Hub:deleteContact failed (" + e.getMessage() + ")");
+			Logger.log("Hub:deleteContact failed (" + e.getMessage() + ")");
 		}
 
 		return false;
@@ -278,10 +254,10 @@ public abstract class Hub {
 			return ReqContact.inviteUser(otherUserEmail);
 		} catch (SocketException e) {
 
-			Logger.pl("Hub:inviteUser failed (" + e.getMessage() + ")");
+			Logger.log("Hub:inviteUser failed (" + e.getMessage() + ")");
 		} catch (IOException e) {
 
-			Logger.pl("Hub:inviteUser failed (" + e.getMessage() + ")");
+			Logger.log("Hub:inviteUser failed (" + e.getMessage() + ")");
 		}
 
 		return false;

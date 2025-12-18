@@ -74,8 +74,6 @@ class NetSend {
 
 					this.counter++;
 
-					Logger.p(".");
-
 					if (message.isSent()) break;
 
 					if (this.counter >= 150) {
@@ -97,14 +95,13 @@ class NetSend {
 
 					try {
 						Thread.sleep(100);
-					}
-					catch (InterruptedException ignored) {
+					} catch (InterruptedException ignored) {
 
 					}
 				}
 			}
 		};
-		t.start();
+		// t.start();
 	}
 
 	private static void processSendResultv(Message message) {
@@ -120,7 +117,7 @@ class NetSend {
 		}
 
 		else {
-			Logger.pl("\n---- Not sent");
+			Logger.log("\n---- Not sent");
 			CoreUtil.logSend("Fail", message);
 		}
 	}

@@ -43,7 +43,7 @@ public class NetMemory {
 	public static void pauseMonitor(boolean b) {
 
 		paused = b;
-		Logger.pl("Monitors paused: " + paused);
+		Logger.log("Monitors paused: " + paused);
 	}
 
 	public static boolean isStarted() {
@@ -66,13 +66,12 @@ public class NetMemory {
 	public synchronized static void changeHeartbeat(int i) {
 
 		if (NetMemory.monitorSleep + i >= 500 && NetMemory.monitorSleep + i <= 10000) {
-			NetMemory.monitorSleep += i;
-			String prefix = i < 0 ? "-" : "+";
-			Logger.p(prefix + NetMemory.monitorSleep);
-		} else
-			Logger.p("=");
-		if (SocketParams.getSocketTimeout() + i >= 500 && SocketParams.getSocketTimeout() + i <= 10000)
-			SocketParams.setSocketTimeout(SocketParams.getSocketTimeout() + i);
+			// NetMemory.monitorSleep += i;
+			// String prefix = i < 0 ? "-" : "+";
+			// Logger.log(prefix + NetMemory.monitorSleep);
+		}
+
+		if (SocketParams.getSocketTimeout() + i >= 500 && SocketParams.getSocketTimeout() + i <= 10000) SocketParams.setSocketTimeout(SocketParams.getSocketTimeout() + i);
 
 	}
 

@@ -18,11 +18,11 @@
 package org.larssentech.xkomm.api.impl;
 
 import org.larssentech.lib.CTK.objects.PUK;
+import org.larssentech.lib.log.Logg3r;
 import org.larssentech.xkomm.api.xapi.Xkomm1Api;
 import org.larssentech.xkomm.core.hub.req.Hub;
 import org.larssentech.xkomm.core.obj.objects.AccountPack;
 import org.larssentech.xkomm.core.obj.objects.User;
-import org.larssentech.xkomm.core.obj.util.Logger;
 
 public class Impl4Init {
 
@@ -69,12 +69,12 @@ public class Impl4Init {
 	}
 
 	public static void setPauseMonitors(boolean b) {
-	
+
 		Hub.hubPauseMonitor(b);
 	}
 
 	public static void setLoggingEnabled(boolean enabled) {
-	
-		Logger.SHUT_UP = !enabled;
+
+		Logg3r.VERBOSE = enabled;
 	}
 }

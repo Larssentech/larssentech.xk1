@@ -22,7 +22,6 @@ import java.io.IOException;
 import java.net.SocketException;
 import java.util.Vector;
 
-import org.larssentech.lib.basiclib.console.Out;
 import org.larssentech.xkomm.core.hub.shared.SocketParams;
 import org.larssentech.xkomm.core.obj.constants.Constants4Core;
 import org.larssentech.xkomm.core.obj.constants.NetworkConstants;
@@ -93,8 +92,7 @@ public class NetMonitor implements Constants4Core, NetworkConstants {
 
 				try {
 
-					while (NetMemory.isPaused())
-						Thread.sleep(Constants4Core.MONITOR_HEART_RATE);
+					while (NetMemory.isPaused()) Thread.sleep(Constants4Core.MONITOR_HEART_RATE);
 
 					Thread.sleep(Constants4Core.MONITOR_HEART_RATE);
 
@@ -105,7 +103,7 @@ public class NetMonitor implements Constants4Core, NetworkConstants {
 			}
 
 			/* If we out of the loop, log (bad things happened) */
-			if (NetMemory.isStarted()) Logger.pl("Monitor not running...");
+			if (NetMemory.isStarted()) Logger.log("Monitor not running...");
 
 		}
 
@@ -172,13 +170,12 @@ public class NetMonitor implements Constants4Core, NetworkConstants {
 				e.printStackTrace();
 			}
 
-			Out.p(" S" + NetMemory.SOCKETS);
 		}
 
 		private Monitor startThread() {
 
 			NetMemory.setStopThread(false);
-			Logger.pl("Starting Monitor thread...");
+			Logger.log("Starting Monitor thread...");
 			this.start();
 			return this;
 		}
@@ -186,7 +183,7 @@ public class NetMonitor implements Constants4Core, NetworkConstants {
 		private static void throttleDown(Exception e) {
 
 			SocketParams.setNetwork(false);
-			Logger.logError(e);
+			Logger.log(e.toString());
 			NetMemory.changeHeartbeat(+500);
 		}
 

@@ -34,7 +34,7 @@ public interface Constants4Core {
 	String FROM_QUEUE_STRING = " <-- ";
 
 	// Thread sleeps (2 threads: controller and monitor)
-	long MONITOR_HEART_RATE = 2000;
+	long MONITOR_HEART_RATE = 5000;
 	long CONTROLLER_HEART_RATE = MONITOR_HEART_RATE * 10;
 	long REQUEST_NET_SLEEP = 2000;
 	String OUT_MSG_STUCK = " MESSAGE STUCK IN OUTBOX ";

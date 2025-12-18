@@ -331,7 +331,7 @@ public class Communicator {
 
 			// The server has to acknowledge our receipt
 			if (!this.getT().fromServer().equals(NetworkConstants.OK))
-				Logger.pl(NetworkConstants.ERROR_IGNORED_RECEIPT);
+				Logger.log(NetworkConstants.ERROR_IGNORED_RECEIPT);
 		}
 
 		// Close socket and unqueue
@@ -354,12 +354,12 @@ public class Communicator {
 	public String getServerPukAnonymously() throws SocketException, IOException {
 
 		// The usual socket and stream management
-		Logger.pl("Requesting server PUK from: " + Constants4Core.SERVER + ":" + Constants4Core.PORT + "...");
+		Logger.log("Requesting server PUK from: " + Constants4Core.SERVER + ":" + Constants4Core.PORT + "...");
 
 		this.getT().getS().makeSocket(Constants4Core.SERVER, Constants4Core.PORT);
 
 		// Server sends 2 lines
-		Logger.pl(this.getT().fromServer());
+		Logger.log(this.getT().fromServer());
 
 		// Store the second line (contains the PUK)
 		String puk = this.getT().fromServer();

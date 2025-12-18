@@ -39,7 +39,9 @@ public class SocketParams {
 	public static long monCount;
 	public static long monStucks;
 
-	public static void setNetwork(boolean b) { network = b; }
+	public static void setNetwork(boolean b) {
+		network = b;
+	}
 
 	public static void resetMonStucks() {
 
@@ -51,8 +53,11 @@ public class SocketParams {
 		return network;
 	}
 
-	public static int getSocketTimeout() { return socketTimeout; }
+	public static int getSocketTimeout() {
+		return socketTimeout;
+	}
 
-	public static void setSocketTimeout(int socketTimeout) { SocketParams.socketTimeout = socketTimeout; }
+	public static void setSocketTimeout(int socketTimeout) {
+	} // SocketParams.socketTimeout = socketTimeout; }
 
 }

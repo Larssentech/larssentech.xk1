@@ -29,8 +29,8 @@ public class RestartApiImpl {
 
 		try {
 
-			Logger.pl(Constants4API.I_AM_THE_FIRESTARTER);
-			Logger.pl(Constants4API.TWISTED_FIRESTARTER);
+			Logger.log(Constants4API.I_AM_THE_FIRESTARTER);
+			Logger.log(Constants4API.TWISTED_FIRESTARTER);
 
 			if (new File(Constants4API.XKOMM_JAR).exists()) Runtime.getRuntime().exec(new String[] { Constants4API.JAVA, Constants4API.JAR, Constants4API.XKOMM_JAR });
 

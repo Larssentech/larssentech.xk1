@@ -37,7 +37,7 @@ public interface Constants4Stream extends Constants4API {
 	String DATA_BLOCKS = "Data blocks: ";
 	String OF = " of ";
 	String BAD_DOWNSTREAM_SPEC = "Bad stream detected... ignoring data...";
-	int BLOCK_BYTES = 1024000;
+	int BLOCK_BYTES = 64000;
 	String FILE_HEADER = "==================";
 	long MAX_OFFLINE_FILE_SIZE = 1100000;
 	int GOOD_FILE = 0;

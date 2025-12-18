@@ -21,9 +21,9 @@ package org.larssentech.xkomm.core.hub.shared;
 import java.util.Date;
 
 import org.larssentech.lib.CTK.objects.PUK;
-import org.larssentech.lib.basiclib.console.Out;
 import org.larssentech.lib.basiclib.toolkit.DTK2;
 import org.larssentech.lib.basiclib.util.XKSequence;
+import org.larssentech.lib.log.Logg3r;
 import org.larssentech.xkomm.core.obj.constants.Constants4Core;
 import org.larssentech.xkomm.core.obj.objects.Message;
 import org.larssentech.xkomm.core.obj.objects.Session;
@@ -68,8 +68,7 @@ public class ObjectFactory {
 
 		Message[] m = new Message[rawMessages.length];
 
-		for (int i = 0; i < rawMessages.length; i++)
-			m[i] = importMessage(rawMessages[i], me, contacts);
+		for (int i = 0; i < rawMessages.length; i++) m[i] = importMessage(rawMessages[i], me, contacts);
 
 		return m;
 	}
@@ -92,11 +91,10 @@ public class ObjectFactory {
 		User to = me;
 		User from = null;
 
-		for (int i = 0; i < contacts.length; i++)
-			if (contacts[i].getId().equals(fromId)) {
-				from = contacts[i];
-				break;
-			}
+		for (int i = 0; i < contacts.length; i++) if (contacts[i].getId().equals(fromId)) {
+			from = contacts[i];
+			break;
+		}
 
 		Message m = new Message(serverGeneratedID, from, to, type, msgBody.getBytes());
 
@@ -106,11 +104,11 @@ public class ObjectFactory {
 		// This ensures the Date we get is for local time zone
 		m.setSentDate(DTK2.getLocalDateFromGmtString(sentDate, Constants4Core.XK_DATE_FORMAT2));
 
-		Out.pl("");
-		Out.pl("INCOMING " + m.getType());
-		Out.pl("Time zone Europe/London. Message timestamp: " + sentDate + " (UK server)");
-		Out.pl("Time zone    Local     . Message timestamp: " + m.getSentDate().toString());
-		Out.pl("");
+		Logg3r.log("");
+		Logg3r.log("INCOMING " + m.getType());
+		Logg3r.log("Time zone Europe/London. Message timestamp: " + sentDate + " (UK server)");
+		Logg3r.log("Time zone         Local. Message timestamp: " + m.getSentDate().toString());
+		Logg3r.log("");
 
 		return m;
 	}
@@ -144,8 +142,7 @@ public class ObjectFactory {
 			return newSession;
 		}
 
-		else
-			return new Session();
+		else return new Session();
 	}
 
 	public static User generateUser(String id, String lastActive) {

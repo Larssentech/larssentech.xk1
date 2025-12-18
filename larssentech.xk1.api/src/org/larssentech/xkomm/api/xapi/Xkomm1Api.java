@@ -102,7 +102,7 @@ public abstract class Xkomm1Api implements HistoryConstants {
 
 	public static void apiPl(String message) {
 
-		Logger.pl(message);
+		Logger.log(message);
 	}
 
 	/**

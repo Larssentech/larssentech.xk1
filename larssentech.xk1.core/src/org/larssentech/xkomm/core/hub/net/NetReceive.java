@@ -31,16 +31,6 @@ import org.larssentech.xkomm.core.obj.objects.Message;
 
 class NetReceive {
 
-	/*
-	 * static void netReceiveMessages(int type) throws SocketException,
-	 * IOException {
-	 * 
-	 * Message[] messages = NetReceive.fetchMessages(type);
-	 * 
-	 * for (int i = 0; i < messages.length; i++)
-	 * NetReceive.put1MessageInStore(messages[i]); }
-	 */
-
 	static void netReceiveMessagesv(int type) throws SocketException, IOException {
 
 		Message[] messages = NetReceive.fetchMessages(type);

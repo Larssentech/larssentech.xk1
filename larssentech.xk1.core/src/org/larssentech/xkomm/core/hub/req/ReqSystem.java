@@ -70,7 +70,7 @@ class ReqSystem {
 
 	public static boolean testNetwork(boolean print, boolean exit) {
 
-		if (print) Logger.pl("Checking overall connectivity...");
+		if (print) Logger.log("Checking overall connectivity...");
 
 		try {
 
@@ -78,7 +78,7 @@ class ReqSystem {
 			s.setSoTimeout(2000);
 
 			if (print)
-				Logger.pl(Constants4Core.V_TEST_URL + " on port " + Constants4Core.V_TEST_PORT + ": " + true + "\n");
+				Logger.log(Constants4Core.V_TEST_URL + " on port " + Constants4Core.V_TEST_PORT + ": " + true + "\n");
 
 			s.close();
 
@@ -90,8 +90,8 @@ class ReqSystem {
 
 		catch (IOException e) {
 
-			if (print) Logger.pl(Constants4Core.V_TEST_URL + " not reachable within time-out value");
-			if (print) Logger.pl("Cannot continue, exiting...");
+			if (print) Logger.log(Constants4Core.V_TEST_URL + " not reachable within time-out value");
+			if (print) Logger.log("Cannot continue, exiting...");
 
 			if (exit) System.exit(-1);
 		}
